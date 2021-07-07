@@ -8,9 +8,10 @@ spec:
   rules:
   - http:
       paths:
-      - backend:
+      - pathType: Prefix
+        path: /
+        backend:
           service:
             name: cosmosdb-issue-apis-svc
             port:
               number: 80
-        path: /
