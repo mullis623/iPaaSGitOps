@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cosmosdb-api-ingress
+  namespace: apis
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
