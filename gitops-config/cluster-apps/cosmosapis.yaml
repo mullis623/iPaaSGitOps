@@ -25,7 +25,7 @@ spec:
       - name: cosmosdb-issue-apis
         image: ipaasacr.azurecr.io/ipaas-issue-apis:v0.1
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources:
           requests:
             memory: "128Mi"
