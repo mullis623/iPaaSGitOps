@@ -36,15 +36,3 @@ spec:
         env:
         - name: REDIS
           value: "azure-vote-back"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cosmosdb-issue-apis
-  namespace: apis
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: cosmosdb-issue-apis
