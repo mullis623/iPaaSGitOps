@@ -33,3 +33,15 @@ spec:
     git: https://github.com/mullis623/iPaaSGitOps
     path: gitops-config/charts/csi-secrets-store-provider-azure
     ref: main
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: pod-identity
+  namespace: podidentity
+spec:
+  releaseName: pod-identity
+  chart:
+    git: https://github.com/mullis623/iPaaSGitOps
+    path: gitops-config/charts/aad-pod-identity
+    ref: main

@@ -1,0 +1,84 @@
+adminsecret: {}
+azureIdentities: null
+customUserAgent: ""
+forceNamespaced: "false"
+fullnameOverride: ""
+image:
+  imagePullPolicy: IfNotPresent
+  repository: mcr.microsoft.com/oss/azure/aad-pod-identity
+installMICException: "true"
+mic:
+  affinity: {}
+  clientQps: ""
+  cloudConfig: /etc/kubernetes/azure.json
+  createDeleteBatch: ""
+  identityAssignmentReconcileInterval: ""
+  image: mic
+  immutableUserMSIs: []
+  leaderElection:
+    duration: ""
+    instance: ""
+    name: ""
+    namespace: ""
+  logVerbosity: 0
+  loggingFormat: ""
+  nodeSelector:
+    kubernetes.io/os: linux
+  podAnnotations: {}
+  podDisruptionBudget: {}
+  podLabels: {}
+  priorityClassName: ""
+  probePort: ""
+  prometheusPort: ""
+  replicas: 2
+  resources:
+    limits:
+      cpu: 200m
+      memory: 1024Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  syncRetryDuration: ""
+  tag: v1.8.0
+  tolerations: []
+  topologySpreadConstraints: []
+  updateUserMSIMaxRetry: ""
+  updateUserMSIRetryInterval: ""
+nameOverride: ""
+nmi:
+  affinity: {}
+  allowNetworkPluginKubenet: false
+  blockInstanceMetadata: ""
+  enableScaleFeatures: ""
+  findIdentityRetryIntervalInSeconds: ""
+  image: nmi
+  ipTableUpdateTimeIntervalInSeconds: ""
+  kubeletConfig: /etc/default/kubelet
+  logVerbosity: 0
+  loggingFormat: ""
+  metadataHeaderRequired: ""
+  micNamespace: ""
+  nodeSelector:
+    kubernetes.io/os: linux
+  podAnnotations: {}
+  podLabels: {}
+  priorityClassName: ""
+  probePort: "8085"
+  prometheusPort: ""
+  resources:
+    limits:
+      cpu: 200m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  retryAttemptsForAssigned: ""
+  retryAttemptsForCreated: ""
+  tag: v1.8.0
+  tolerations: []
+operationMode: standard
+rbac:
+  allowAccessToSecrets: true
+  createUserFacingClusterRoles: false
+  enabled: true
+  pspEnabled: false
