@@ -1,0 +1,35 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: ingress
+spec:
+  releaseName: arc-k8s-demo
+  chart:
+    git: https://github.com/mullis623/iPaaSGitOps
+    path: gitops-config/charts/ingress-nginx
+    ref: main
+  values:
+    controller:
+      replicaCount: 2
+      nodeSelector: 
+        kubernetes.io/os: linux
+      admissionWebhooks:
+        patch:
+          nodeSelector:
+            kubernetes.io/os: linux
+    defaultBackend:
+      nodeSelector:
+        kubernetes.io/os: linux
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: csi-secrets-store-provider-azure
+  namespace: keyvault
+spec:
+  releaseName: csi-secrets-store-provider-azure
+  chart:
+    git: https://github.com/mullis623/iPaaSGitOps
+    path: gitops-config/charts/csi-secrets-store-provider-azure
+    ref: main
