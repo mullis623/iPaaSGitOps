@@ -17,6 +17,7 @@ spec:
     metadata:
       labels:
         app: cosmosdb-issue-apis
+        aadpodidbinding: azure-pod-identity-binding-selector
     spec:
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -34,8 +35,42 @@ spec:
             memory: "256Mi"
             cpu: "1000m"
         env:
-        - name: REDIS
-          value: "azure-vote-back"
+        - name: CosmosDBContainerId
+          valueFrom:
+            secretKeyRef:
+              name: CosmosDBContainerId
+              key: containerkey
+        - name: CosmosDBEndpoint
+          valueFrom:
+            secretKeyRef:
+              name: CosmosDBEndpoint
+              key: endpointkey
+        - name: CosmosDBId
+          valueFrom:
+            secretKeyRef:
+              name: CosmosDBId
+              key: dbkey
+        - name: CosmosDBReadOnlyKey
+          valueFrom:
+            secretKeyRef:
+              name: CosmosDBReadOnlyKey
+              key: readonlykey
+        - name: CosmosDBWriteKey
+          valueFrom:
+            secretKeyRef:
+              name: CosmosDBWriteKey
+              key: writekey
+        volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+    volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-ipaasdemokv"
 ---
 apiVersion: v1
 kind: Service

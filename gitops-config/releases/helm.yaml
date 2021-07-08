@@ -25,10 +25,10 @@ spec:
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: csi-secrets-store-provider-azure
+  name: csi
   namespace: kube-system
 spec:
-  releaseName: csi-secrets-store-provider-azure
+  releaseName: csi
   chart:
     git: https://github.com/mullis623/iPaaSGitOps
     path: gitops-config/charts/csi-secrets-store-provider-azure

@@ -1,0 +1,16 @@
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentity
+metadata:
+    name: azureKVIdentity                 # The name of your Azure identity
+spec:
+    type: 0                                 # Set type: 0 for managed identity
+    resourceID: /subscriptions/076f98ce-ac85-4f4a-a88b-efece886f169/resourcegroups/iPaaSDemo-PROD/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ipaas-aks-keyvault-mi
+    clientID: "b46044d8-c613-46f6-b935-4b4f2d7c36d4"
+---
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentityBinding
+metadata:
+    name: azure-pod-identity-binding
+spec:
+    azureIdentity: "azureKVIdentity"      # The name of your Azure identity
+    selector: azure-pod-identity-binding-selector
