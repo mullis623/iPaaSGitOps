@@ -4,7 +4,7 @@ metadata:
   name: nginx-ingress
   namespace: ingress
 spec:
-  releaseName: arc-k8s-demo
+  releaseName: ingress-nginx
   chart:
     git: https://github.com/mullis623/iPaaSGitOps
     path: gitops-config/charts/ingress-nginx
