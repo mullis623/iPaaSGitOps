@@ -38,27 +38,27 @@ spec:
         - name: CosmosDBContainerId
           valueFrom:
             secretKeyRef:
-              name: CosmosDBContainerId
+              name: cosmos-db-container-id
               key: containerkey
         - name: CosmosDBEndpoint
           valueFrom:
             secretKeyRef:
-              name: CosmosDBEndpoint
+              name: cosmos-db-endpoint
               key: endpointkey
         - name: CosmosDBId
           valueFrom:
             secretKeyRef:
-              name: CosmosDBId
+              name: cosmos-db-id
               key: dbkey
         - name: CosmosDBReadOnlyKey
           valueFrom:
             secretKeyRef:
-              name: CosmosDBReadOnlyKey
+              name: cosmos-db-readonly-key
               key: readonlykey
         - name: CosmosDBWriteKey
           valueFrom:
             secretKeyRef:
-              name: CosmosDBWriteKey
+              name: cosmos-db-write-key
               key: writekey
         volumeMounts:
             - name: secrets-store-inline
