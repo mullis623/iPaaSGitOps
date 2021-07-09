@@ -33,6 +33,10 @@ spec:
     git: https://github.com/mullis623/iPaaSGitOps
     path: gitops-config/charts/csi-secrets-store-provider-azure
     ref: main
+  values:
+    secrets-store-csi-driver:
+      syncSecret:
+        enabled: true
 ---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
