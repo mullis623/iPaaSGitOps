@@ -9,14 +9,14 @@ spec:
   rules:
   - http:
       paths:
-      - pathType: Prefix
+      - pathType: Exact
         path: /apis
         backend:
           service:
             name: cosmosdb-issue-apis-svc
             port:
               number: 80
-      - pathType: Prefix
+      - pathType: Exact
         path: /vnext
         backend:
           service:
