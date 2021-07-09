@@ -16,3 +16,10 @@ spec:
             name: cosmosdb-issue-apis-svc
             port:
               number: 80
+      - pathType: Prefix
+        path: /vnext/
+        backend:
+          service:
+            name: cosmosdb-issue-apis-vnext-svc
+            port:
+              number: 80
