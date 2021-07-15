@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cosmosdb-issue-apis
+  name: cosmosdb-issue-readapis
   namespace: apis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cosmosdb-issue-apis
+      app: cosmosdb-issue-readapis
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -16,15 +16,15 @@ spec:
   template:
     metadata:
       labels:
-        app: cosmosdb-issue-apis
+        app: cosmosdb-issue-readapis
         aadpodidbinding: azure-pod-identity-binding-selector
     spec:
       nodeSelector:
         kubernetes.io/arch: amd64
         kubernetes.io/os: linux
       containers:
-      - name: cosmosdb-issue-apis
-        image: ipaasacr.azurecr.io/ipaas-issue-apis:v0.1
+      - name: cosmosdb-issue-readapis
+        image: ipaasacr.azurecr.io/ipaas-issue-readapis:v1.0
         ports:
         - containerPort: 8080
         resources:
@@ -55,11 +55,6 @@ spec:
             secretKeyRef:
               name: cosmos-db-readonly-key
               key: readonlykey
-        - name: CosmosDBWriteKey
-          valueFrom:
-            secretKeyRef:
-              name: cosmos-db-write-key
-              key: writekey
         volumeMounts:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
@@ -75,7 +70,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cosmosdb-issue-apis-svc
+  name: cosmosdb-issue-readapis-svc
   namespace: apis
 spec:
   type: ClusterIP
@@ -83,4 +78,4 @@ spec:
   - port: 80
     targetPort: 8080
   selector:
-    app: cosmosdb-issue-apis
+    app: cosmosdb-issue-readapis

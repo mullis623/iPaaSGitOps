@@ -11,16 +11,16 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: /apis(/|$)(.*)
+        path: /rapis(/|$)(.*)
         backend:
           service:
-            name: cosmosdb-issue-apis-svc
+            name: cosmosdb-issue-readapis-svc
             port:
               number: 80
       - pathType: Prefix
-        path: /vnext(/|$)(.*)
+        path: /wapis(/|$)(.*)
         backend:
           service:
-            name: cosmosdb-issue-apis-vnext-svc
+            name: cosmosdb-issue-writeapis-svc
             port:
               number: 80
