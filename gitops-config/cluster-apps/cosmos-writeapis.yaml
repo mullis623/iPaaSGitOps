@@ -24,7 +24,7 @@ spec:
         kubernetes.io/os: linux
       containers:
       - name: cosmosdb-issue-writeapis
-        image: ipaasacr.azurecr.io/ipaas-issue-writeapis:v1.0
+        image: ipaasacr.azurecr.io/ipaas-issue-writeapis:47eb3e8019e43cb5aca44c146f77a9e1a9415a03
         ports:
         - containerPort: 8080
         resources:
