@@ -5,8 +5,8 @@ on:
     types: [update-image-name]
 
 env:
-  userEmail: 'mullis623@@outlook.com'
-  userName: 'mullis623'
+  userEmail: 'mullis623@outlook.com'
+  userName: 'githubaction-updateimagename'
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
 
     - name: Copy Updated File
       run: |
-        cp cluster-apps/${{ env.fileToUpdate }} cluster-apps/test
+        cp cluster-apps/${{ env.fileToUpdate }} gitops-config/cluster-apps
 
     - name: Commit and Push Changes
       run: |
