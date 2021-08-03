@@ -38,5 +38,5 @@ jobs:
         git config user.email ${{ env.userEmail }}
         git restore cluster-apps/${{ env.fileToUpdate }}
         git add .
-        git commit -m "Commits generated from new image version for image: ${{ env.imageName }}"
+        git commit -m "Commits generated from new image version for image: ${{ env.newImageName }}"
         git push
