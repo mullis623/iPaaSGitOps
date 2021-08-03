@@ -24,7 +24,7 @@ spec:
         kubernetes.io/os: linux
       containers:
       - name: cosmosdb-issue-readapis
-        image: ipaasacr.azurecr.io/ipaas-issue-readapis:v1.0
+        image: ipaasacr.azurecr.io/ipaas-issue-readapis:9774127dc84b1d6ed015561527989f44121353ca
         ports:
         - containerPort: 8080
         resources:
