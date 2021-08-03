@@ -1,0 +1,42 @@
+name: Update Image Name in Deployment Yaml
+
+on: 
+  repository_dispatch:
+    types: [update-image-name]
+
+env:
+  userEmail: 'mullis623@@outlook.com'
+  userName: 'mullis623'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+    - uses: actions/checkout@v2
+
+    - name: Read Client Payload
+      run: |
+        echo "fileToUpdate=${{ github.event.client_payload.fileToUpdate }}" >> $GITHUB_ENV 
+        echo "newImageName=${{ github.event.client_payload.imageName }}"  >> $GITHUB_ENV
+
+    - name: Replace Image Name
+      uses: datamonsters/replace-action@v2
+      with:
+        files: cluster-apps/${{ env.fileToUpdate }}
+        replacements: '$Image=${{ env.newImageName }}'
+
+    - name: Copy Updated File
+      run: |
+        cp cluster-apps/${{ env.fileToUpdate }} cluster-apps/test
+
+    - name: Commit and Push Changes
+      run: |
+        git config user.name ${{ env.userName }}
+        git config user.email ${{ env.userEmail }}
+        git restore cluster-apps/${{ env.fileToUpdate }}
+        git add .
+        git commit -m "Commits generated from new image version for image: ${{ env.imageName }}"
+        git push
